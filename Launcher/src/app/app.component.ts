@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { invoke } from "@tauri-apps/api/tauri";
 
 @Component({
@@ -16,5 +16,10 @@ export class AppComponent {
     invoke<string>("greet", { name }).then((text) => {
       this.greetingMessage = text;
     });
+  }
+
+  @HostListener('document:DOMContentLoaded', ['$event'])
+  onDomContentLoaded(event: Event) {
+    setTimeout(() => invoke('close_splashscreen'), 2000);
   }
 }
