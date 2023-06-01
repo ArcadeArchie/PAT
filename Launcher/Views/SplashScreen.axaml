@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PAT.Launcher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="400"
+        d:DesignHeight="600"
+        Width="400"
+        Height="600"
+        x:Class="PAT.Launcher.Views.SplashScreen"
+        x:DataType="vm:SplashScreenViewModel"
+        WindowStartupLocation="CenterOwner"
+        SystemDecorations="None"
+        Topmost="True"
+        Title="SplashScreen">
+  <Window.Styles>
+    <Style Selector="StackPanel">
+      <Style.Animations>
+        <Animation Duration="0:0:1">
+          <KeyFrame Cue="0%">
+            <Setter Property="Opacity" Value="0.0"/>
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="Opacity" Value="1.0"/>
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+  </Window.Styles>
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:SplashScreenViewModel/>
+  </Design.DataContext>
+  <Border>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+      <Image Source="/Assets/logo.png"/>
+      <Label Content="Splashscreen XDDDDDD" HorizontalContentAlignment="Center"
+             />
+    </StackPanel>
+  </Border>
+</Window>
