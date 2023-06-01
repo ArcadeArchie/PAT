@@ -2,15 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   @apply text-base font-normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;  
+  -webkit-text-size-adjust: 100%;
 }
-
 
 .logo {
   height: 6em;
@@ -95,4 +94,22 @@ button {
   button:active {
     background-color: #0f0f0f69;
   }
+}
+.splash-container {
+  @apply container max-w-screen-lg mx-auto pb-10;
+  @apply flex flex-col justify-center h-full;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.splash-container > img {
+  @apply mx-auto;
+}
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
 }

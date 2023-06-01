@@ -38,7 +38,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "media"
             },
             "development": {
               "buildOptimizer": false,
