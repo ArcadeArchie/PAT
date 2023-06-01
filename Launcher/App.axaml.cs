@@ -1,5 +1,6 @@
 using System;
 using System.Security.Authentication.ExtendedProtection;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -24,7 +25,8 @@ public partial class App : Application
     private IServiceProvider ConfigureServices()
     {
         var services = new ServiceCollection();
-
+        services.AddTransient<SplashScreenViewModel>();
+        services.AddTransient<MainWindowViewModel>();
         return services.BuildServiceProvider();
     }
 
@@ -35,17 +37,27 @@ public partial class App : Application
 
 
 
-    public override void OnFrameworkInitializationCompleted()
+    public override async void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Line below is needed to remove Avalonia data validation.
             // Without this line you will get duplicate validations from both Avalonia and CT
             BindingPlugins.DataValidators.RemoveAt(0);
+
+            var splash = new SplashScreen()
+            {
+                DataContext = Current.Services.GetRequiredService<SplashScreenViewModel>(),
+            };
+            desktop.MainWindow = splash;
+            splash.Show();
+            await Task.Delay(2000);
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = Current.Services.GetRequiredService<MainWindowViewModel>(),
             };
+            desktop.MainWindow.Show();
+            splash.Close();
         }
 
         base.OnFrameworkInitializationCompleted();

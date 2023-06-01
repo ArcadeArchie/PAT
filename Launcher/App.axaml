@@ -2,9 +2,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="PAT.Launcher.App"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
+  <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+  <Application.Styles>
+    <FluentTheme/>
+  </Application.Styles>
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key='Default'>
+          <Color x:Key='BackgroundColor'>#2f2f2f</Color>
+          <Color x:Key='ForgroundColor'>#f6f6f6</Color>
+          <Color x:Key='TextControlBackgroundColor'>#980F0F0F</Color>
+          <SolidColorBrush x:Key='SystemRegionBrush' 
+                           Color='{StaticResource BackgroundColor}' />
+          <SolidColorBrush x:Key='SystemControlForegroundBaseHighBrush' 
+                           Color='{StaticResource ForgroundColor}' />
+          <SolidColorBrush x:Key='TextControlBackground' 
+                           Color='{StaticResource TextControlBackgroundColor}' />
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>
